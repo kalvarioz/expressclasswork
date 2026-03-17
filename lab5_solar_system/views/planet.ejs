@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Lab 5: Solar System</title>
+    <style>
+        body {
+            background-color: dodgerblue;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: 1px;
+        }
+
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+
+        }
+
+        img {
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+ <head>
+    <%- include('partials/head') %>
+    <title>Solar System - <%= planetInfo.name %></title>
+</head>
+<body>
+    <h1 class="bg-info text-white text-center p-3 m-0"> The Solar System</h1>
+
+    <%- include('partials/nav') %>
+
+    <div class="container mt-5">
+        <!-- Planet Name as Header -->
+        <h2 class="text-black text-center display-4 mb-4"><%= planetInfo.name %></h2>
+
+        <div class="row g-4">
+            <!-- Image -->
+            <div class="col-md-6">
+                <div class="card bg-dark border-info h-100">
+                    <img src="<%= planetInfo.image %>" class="card-img-top" alt="<%= planetInfo.name %>"
+                        style="max-height: 350px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <!-- <a href="<%= planetInfo.websiteLink %>" target="_blank" class="btn btn-info">
+                            Learn More on NASA
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-dark text-white border-info h-100">
+                    <div class="card-header bg-info text-dark fw-bold fs-5">Planet Info</div>
+                    <div class="card-body">
+                        <p class="card-text"><%= planetInfo.description %></p>
+                        <hr class="border-info">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark text-white border-secondary">
+                            <strong>Radius:</strong> <%= planetInfo.radius %> miles
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-secondary">
+                            <strong>Distance from Sun:</strong> <%= planetInfo.distanceFromSun %>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-secondary">
+                            <strong>Year Length:</strong> <%= planetInfo.yearLength %>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-secondary">
+                            <strong>One Earth Day:</strong> <%= planetInfo.oneEarthDay %>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-secondary">
+                            <strong>Moons:</strong> <%= planetInfo.moons %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+                <!-- <div class="container-fluid m-5 row">
+                <div class="card p-4">
+                    <h2 class="p-4 col">Planet</h2>
+
+                    <%= planetInfo.description %>
+
+                </div>
+                <div class="col card">
+                    <img src="<%= planetInfo.image %>">
+                </div>
+
+            </div> -->
+
+                <%- include ('partials/footer')%>
+
+            <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script> -->
+
+        </body>
+
+</html>
