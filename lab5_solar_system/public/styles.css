@@ -1,0 +1,46 @@
+body {
+    background-color: darkblue;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.navbar-brand {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-outline-info {
+    border-color: cyan;
+    color: cyan;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-outline-info:hover {
+    background-color: cyan;
+    color: darkblue;
+    transform: scale(1.05);
+}
+
+.btn-info {
+    background-color: #00bcd4;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-info:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+}
