@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <%- include('partials/head') %>
-    <title>Solar System - Asteroids</title>
+    <title>Solar System - Comets</title>
 </head>
 <body>
-    <h1 class="bg-info text-white text-center p-3 m-0">🌌 The Solar System</h1>
+    <h1 class="bg-info text-white text-center p-3 m-0">The Solar System</h1>
 
     <%- include('partials/nav') %>
 
     <div class="container mt-5">
-        <h2 class="text-white text-center display-4 mb-4">☄️ Asteroids</h2>
+        <h2 class="text-white text-center display-4 mb-4">Comets</h2>
 
         <div class="row g-4 justify-content-center">
             <div class="col-md-6">
                 <div class="card bg-dark border-info h-100">
-                    <img src="<%= asteroidInfo.image %>" class="card-img-top" alt="Asteroid"
+                    <img src="<%= cometInfo.image %>" class="card-img-top" alt="Comet"
                         style="max-height: 350px; object-fit: cover;">
                     <div class="card-body text-center">
-                        <a href="<%= asteroidInfo.link %>" target="_blank" class="btn btn-info">
-                            Explore Asteroids on NASA ↗
+                        <a href="<%= cometInfo.link %>" target="_blank" class="btn btn-info">
+                            Explore Comets on NASA
                         </a>
                     </div>
                 </div>
@@ -27,9 +27,9 @@
 
             <div class="col-md-6">
                 <div class="card bg-dark text-white border-info h-100">
-                    <div class="card-header bg-info text-dark fw-bold fs-5">What Are Asteroids?</div>
+                    <div class="card-header bg-info text-dark fw-bold fs-5">What Are Comets?</div>
                     <div class="card-body">
-                        <p class="card-text fs-5"><%= asteroidInfo.def %></p>
+                        <p class="card-text fs-5"><%= cometInfo.def %></p>
                     </div>
                 </div>
             </div>

@@ -10,12 +10,12 @@ const KEY='5589438';
 const NASA_KEY='BOdJgf7TZaZL6c8I6mMUy7vstaCf24fJA2dhsQdU';
 async function getNasaPOD() {
     const today = new Date().toISOString().split('T')[0];
-    const fallbackDate = '2025-03-11';
+    // const fallbackDate = '2025-03-11';
 
-    for (const date of [today, fallbackDate]) {
+    for (const date of [today]) {
         try {
             const res = await fetch(
-                `https://api.nasa.gov/planetary/apod?api_key=${NASA_KEY}&date=${date}`
+                `https://api.nasa.gov/planetary/apod?api_key=${NASA_KEY}`
             );
             const data = await res.json();
             if (data.url) return data;
@@ -76,6 +76,7 @@ app.get('/comets', (req, res) => {
     const cometInfo = planets.getComets();
     res.render('comet', { cometInfo });
 });
+
 app.listen(3000, () => {
    console.log('server started');
 });
