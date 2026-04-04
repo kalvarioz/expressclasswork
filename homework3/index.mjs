@@ -3,25 +3,30 @@ import fetch from "node-fetch";
 import dotenv from "dotenv";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { movies } from "./data/movies.mjs";
 import { formatMovieCard } from "@calvario/calvario-mov";
+import { movies } from "./data/movies.mjs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import crypto from "crypto";
 dotenv.config();
 
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+
 app.use((req, res, next) => {
-  res.locals.nonce = crypto.randomBytes(16).toString("base64");
+  const nonce = crypto.randomBytes(16).toString("base64");
+  res.locals.nonce = nonce;
 
   res.setHeader("Content-Security-Policy", [
     `default-src 'self'`,
-    `script-src 'self' 'nonce-${res.locals.nonce}' 'sha256-ZswfTY7H35rbv8WC7NXBoiC7WNu86vSzCDChNWwZZDM=' cdn.jsdelivr.net`,
-    `style-src 'self' cdn.jsdelivr.net`,
+    `script-src 'self' 'nonce-${nonce}' 'sha256-ZswfTY7H35rbv8WC7NXBoiC7WNu86vSzCDChNWwZZDM=' cdn.jsdelivr.net`,
+    `style-src 'self' 'nonce-${nonce}' 'sha256-GsQC5AaXpdCaKTyWbxBzn7nitfp0Otwn7I/zu0rUKOs=' 'unsafe-hashes' cdn.jsdelivr.net`,
     `img-src 'self' image.tmdb.org data: https:`,
     `font-src 'self' cdn.jsdelivr.net`,
     `connect-src 'self'`,
-    `media-src 'self' blob: *.workers.dev`,
+    `media-src 'self' blob: https://*.workers.dev https://*.r2.cloudflarestorage.com`,
     `form-action 'self'`,
   ].join("; "));
 
@@ -37,12 +42,8 @@ const r2 = new S3Client({
     },
 });
 
-async function getStreamUrl(objectKey) {
-    const cmd = new GetObjectCommand({
-        Bucket: process.env.R2_BUCKET,
-        Key: objectKey,
-    });
-    return getSignedUrl(r2, cmd, { expiresIn: 3600 });
+function getStreamUrl(r2Key) {
+  return `${process.env.WORKER_URL}/stream/${r2Key}`;
 }
 
 async function enrichMovies(movieList) {
