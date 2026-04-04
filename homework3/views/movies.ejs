@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+
+<section class="library-section">
+  <h2 class="section-heading">Full Library</h2>
+  <div class="card-grid">
+    <% movies.forEach(movie => { %>
+      <%- include('partials/movie-card', { movie }) %>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

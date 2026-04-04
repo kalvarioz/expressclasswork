@@ -1,0 +1,186 @@
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: rgb(75, 75, 75);
+    color: whitesmoke;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: #111;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #8a8a8a;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 19px;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 12px 30px;
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.hero-sub {
+    font-size: 25px;
+    color: lightgray;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background: #1a1a1a;
+    color:white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: #acacac;
+}
+
+.btn-secondary {
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 0.6rem 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    border-color: white;
+    color: white;
+}
+
+.section-heading {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    font-weight: bold;
+    color: lightsalmon;
+    margin-bottom: 20px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    padding: 0 2rem 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.movie-card {
+    background: #2e1c1c;
+    border-radius: 19px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: scale(1.03);
+}
+
+.card-body {
+    padding: 0.8rem;
+    width: 200px;
+    height: 200px;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.card-badge {
+    background: #740000;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.card-desc {
+    font-size: 15px;
+    color: #999;
+    margin-top: 15px;
+    gap: 12.5px;
+}
+
+.search-cta {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.player-container{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.player-container h2{
+    margin-top: 20px;
+    font-weight: bold;
+}
+.video-player{
+    padding: 50px;
+    background-color: #444;
+    border-radius: 10%;
+}
+
+.movie-meta{
+    margin-top: 30px;
+    font-size: 15px;
+}
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    color: #ffffff;
+    border-top: 1px solid #1a1a1a;
+    font-size: 12px;
+    margin-top: 20px;
+}

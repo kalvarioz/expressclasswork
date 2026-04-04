@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<section class="search-section">
+  <form action="/search" method="POST" class="search-form">
+    <input type="text" name="query" class="search-input"
+           placeholder="Search title..." value="<%= query || '' %>">
+    <select name="genre">
+      <option value="all">All genres</option>
+      <option value="animation">Animation</option>
+      <option value="action">Action</option>
+      <option value="drama">Drama</option>
+    </select>
+    <button type="submit" class="btn-primary">Search</button>
+  </form>
+
+  <% if (results && results.length > 0) { %>
+    <div class="card-grid">
+      <% results.forEach(movie => { %>
+        <%- include('partials/movie-card', { movie }) %>
+      <% }) %>
+    </div>
+  <% } else if (results) { %>
+    <p class="no-results">No movies found for "<%= query %>"</p>
+  <% } %>
+</section>
+
+<script src="/search.js"></script>
+<%- include('partials/footer') %>

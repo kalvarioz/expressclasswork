@@ -1,0 +1,24 @@
+{
+  "name": "homework3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1019.0",
+    "@aws-sdk/s3-request-presigner": "^3.1019.0",
+    "@calvario/calvario-mov": "^1.0.2",
+    "@calvario/calvmovies-cards": "^1.0.0",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.20.0",
+    "node-fetch": "^3.3.2"
+  }
+}

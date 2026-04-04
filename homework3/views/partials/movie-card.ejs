@@ -1,0 +1,18 @@
+<a href="/movies/<%= movie.id %>" class="movie-card">
+  <% if (movie.posterUrl) { %>
+    <img
+      src="<%= movie.posterUrl %>"
+      alt="<%= movie.title %>"
+      class="card-poster"
+      onerror="this.style.display='none'"
+    >
+  <% } else { %>
+    <div class="card-poster-placeholder"></div>
+  <% } %>
+  <div class="card-body">
+    <h3 class="card-title"><%= movie.title %></h3>
+    <span class="card-rating"><%= movie.ratingDisplay %></span>
+    <span class="card-badge"><%= movie.genre %></span>
+    <p class="card-desc"><%= movie.shortDescription %></p>
+  </div>
+</a>
