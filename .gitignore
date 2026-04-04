@@ -11,3 +11,6 @@ node_modules/
 Thumbs.db
 npm-debug.log*
 *.log
+homework3/scripts/upload.mjs
+homework3/calvario-mov/index.mjs
+homework3/calvario-mov/package.json
