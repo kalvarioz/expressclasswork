@@ -11,6 +11,22 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.locals.nonce = crypto.randomBytes(16).toString("base64");
+
+  res.setHeader("Content-Security-Policy", [
+    `default-src 'self'`,
+    `script-src 'self' 'nonce-${res.locals.nonce}' 'sha256-ZswfTY7H35rbv8WC7NXBoiC7WNu86vSzCDChNWwZZDM=' cdn.jsdelivr.net`,
+    `style-src 'self' cdn.jsdelivr.net`,
+    `img-src 'self' image.tmdb.org data: https:`,
+    `font-src 'self' cdn.jsdelivr.net`,
+    `connect-src 'self'`,
+    `media-src 'self' blob: *.workers.dev`,
+    `form-action 'self'`,
+  ].join("; "));
+
+  next();
+});
 
 const r2 = new S3Client({
     region: "auto",
@@ -61,12 +77,16 @@ app.get("/search", (req, res) => {
     res.render("search", { results: null, query: "", genre: "all" });
 });
 app.get("/movies/:id", async (req, res) => {
+  try {
     const movie = movies.find((m) => m.id === req.params.id);
-    if (!movie){
-        return res.status(404).send("Not found");
-    }
+    if (!movie) return res.status(404).send("Movie not found (for this homework i made only one movie available)");
+
     const streamUrl = await getStreamUrl(movie.r2Key);
     res.render("player", { movie, streamUrl });
+  } catch (err) {
+    console.error("Player route error:", err.message);
+    res.status(500).send(`Stream error: ${err.message}`);
+  }
 });
 app.post("/search", async (req, res) => {
   const { query, genre } = req.body;
