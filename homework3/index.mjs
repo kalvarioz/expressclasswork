@@ -43,7 +43,7 @@ const r2 = new S3Client({
 });
 
 function getStreamUrl(r2Key) {
-  return `${process.env.WORKER_URL}/stream/${r2Key}`;
+  return `${process.env.WORKER_URL}/${r2Key}`;
 }
 
 async function enrichMovies(movieList) {
