@@ -1,3 +1,7 @@
+/**
+ * Brandon Calvario
+ * CST 336
+ */
 function initMap(quakes, fitBounds = false) {
   const map = L.map("map", { zoomControl: true }).setView([20, 0], 2);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {

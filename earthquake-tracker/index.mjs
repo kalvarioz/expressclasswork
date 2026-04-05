@@ -1,3 +1,8 @@
+/**
+ * Brandon Calvario
+ * CST 336
+ * Used dayjs node package and USGS API.
+ */
 import express from "express";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime.js";
@@ -9,7 +14,6 @@ const PORT = 5000;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-
 async function fetchEarthquakes(params = {}) {
   const defaults = {
     format: "geojson",
@@ -63,14 +67,14 @@ app.get("/results", async (req, res) => {
 
   const params = { minmagnitude, maxmagnitude, limit };
   if (starttime) params.starttime = starttime;
-  if (endtime)   params.endtime   = endtime;
+  if (endtime)params.endtime = endtime;
 
   try {
     const data = await fetchEarthquakes(params);
     const quakes = data.features.map(formatQuake);
     res.render("results", {
       quakes,
-      count:   data.metadata.count,
+      count: data.metadata.count,
       filters: req.query,
     });
   } catch (err) {
