@@ -4,7 +4,7 @@ import relativeTime from "dayjs/plugin/relativeTime.js";
 dayjs.extend(relativeTime);
 
 const app = express();
-const PORT = 8000;
+const PORT = 5000;
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
