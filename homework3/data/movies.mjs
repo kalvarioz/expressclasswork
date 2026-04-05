@@ -12,7 +12,7 @@ export const movies = [
     title: 'Real Steel',
     genre: 'action',
     tmdbId: 39254,
-    r2Key: 'movies/realsteel.mp4',
+    r2Key: 'movies/RealSteel.mp4',
     description: 'Charlie Kenton is a washed-up fighter who retired from the ring when robots took over the sport. After his robot is trashed, he reluctantly teams up with his estranged son to rebuild and train an unlikely contender.'
   },
   {
@@ -20,7 +20,7 @@ export const movies = [
     title: 'Pacific Rim',
     genre: 'action',
     tmdbId: 68726,
-    r2Key: 'movies/null.mp4',
+    r2Key: 'movies/PacificRim.mkv',
     description: 'Using massive piloted robots to combat the alien threat, earths survivors take the fight to the invading alien force lurking in the depths of the Pacific Ocean. Nearly defenseless in the face of the relentless enemy, the forces of mankind have no choice but to turn to two unlikely heroes who now stand as earths final hope against the mounting apocalypse.'
   },
     {
@@ -28,7 +28,7 @@ export const movies = [
     title: 'WALL-E',
     genre: 'animation',
     tmdbId: 10681,
-    r2Key: 'movies/null.mp4',
+    r2Key: 'movies/WALL-E.mkv',
     description: 'After hundreds of years doing what he was built for, WALL•E— a robot designed to clean up the earth—discovers a new purpose in life when he meets a sleek search robot named EVE. EVE comes to realize that WALL•E has inadvertently stumbled upon the key to the planets future, and races back to space to report to the humans. Meanwhile, WALL•E chases EVE across the galaxy and sets into motion one of the most imaginative adventures ever brought to the big screen.'
   }
 ];
