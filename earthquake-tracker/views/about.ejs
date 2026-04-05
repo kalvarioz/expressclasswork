@@ -1,0 +1,39 @@
+<%- include('partials/header', { title: 'About' }) %>
+<%- include('partials/nav') %>
+
+<main class="main">
+    <h1 class="page-title">About</h1>
+
+  <section class="about-section">
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3 class="about-card-title">Data Source</h3>
+        <p class="about-card-text">
+          All earthquake data is fetched live from the USGS Earthquake Hazards Program API.
+          This free, public API provides real-time and historical seismic data from sensors around the world.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3 class="about-card-title">Node Package Used</h3>
+        <p class="about-card-text">
+          Day.js: a lightweight JavaScript date library to parse and format raw UTC timestamps from the USGS
+          into human-readable strings like "2 hours ago" and "Apr 4, 2025 at 3:22 PM".
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3 class="about-card-title">Resources</h3>
+        <ul class="about-list">
+          <li><strong>Day.js</strong> - timestamp formatting</li>
+          <li><strong>USGS API </strong> - live earthquake data</li>
+          <li><strong>Leaflet.js</strong> - interactive maps</li>
+          <li><strong>CartoDB</strong>- map tile styling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

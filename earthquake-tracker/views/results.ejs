@@ -1,0 +1,62 @@
+<%- include('partials/header', { title: 'Results' }) %>
+<%- include('partials/nav') %>
+
+<main class="main">
+    <h1 class="page-title">Found <span class="accent"><%= count %></span> Events</h1>
+    <p class="page-desc">
+      Magnitude <%= filters.minmagnitude %> to <%= filters.maxmagnitude === '10' ? '10+' : filters.maxmagnitude %>
+      -
+      <% if (filters.starttime) { %><%= filters.starttime %><% } else { %>All time<% } %>
+      <% if (filters.endtime) { %> - <%= filters.endtime %><% } %>
+    </p>
+    <a href="/search" class="btn btn-outline">New Search</a>
+
+  <% if (quakes.length === 0) { %>
+    <div class="empty-state">
+      <p class="empty-text">No earthquakes found matching your criteria.</p>
+      <a href="/search" class="btn btn-primary">Try Again</a>
+    </div>
+  <% } else { %>
+
+    <section class="map-section">
+      <div class="section-header">
+        <h2 class="section-title">Map View</h2>
+      </div>
+      <div id="map" class="map-container"></div>
+    </section>
+
+    <section class="feed-section">
+      <div class="section-header">
+        <h2 class="section-title">Event List</h2>
+        <p class="section-sub">Showing <%= quakes.length %> of <%= count %> results</p>
+      </div>
+      <div class="quake-list">
+        <% quakes.forEach(q => { %>
+          <div class="quake-card mag-<%= parseFloat(q.magnitude) >= 6 ? 'high' : parseFloat(q.magnitude) >= 5 ? 'mid' : 'low' %>">
+            <div class="quake-mag">
+              <span class="mag-value"><%= q.magnitude %></span>
+              <span class="mag-label">mag</span>
+            </div>
+            <div class="quake-info">
+              <p class="quake-place"><%= q.place %></p>
+              <p class="quake-time"><%= q.timeAgo %> - <%= q.time %></p>
+              <p class="quake-depth">Depth: <strong><%= q.depth %> km</strong></p>
+            </div>
+            <div class="quake-actions">
+              <a href="<%= q.url %>" target="_blank" class="quake-link">USGS →</a>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+  <% } %>
+</main>
+
+<%- include('partials/footer') %>
+<% if (quakes.length > 0) { %>
+<script src="/js/map.js"></script>
+<script>initMap(<%- JSON.stringify(quakes) %>, true);</script>
+<% } %>
+</body>
+</html>

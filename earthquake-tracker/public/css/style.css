@@ -1,0 +1,389 @@
+body {
+  background-color: rgb(44, 44, 44);
+  color: whitesmoke;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+}
+
+a {
+  color: orange;
+  text-decoration: none;
+}
+
+strong {
+  color: whitesmoke;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2rem;
+  background-color: black;
+  border-bottom: 1px solid orange;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-size: 15px;
+  font-weight: bold;
+  color: orange;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+}
+
+.nav-link {
+  color: orange;
+  font-size: 15px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: whitesmoke;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: whitesmoke;
+  margin-bottom: 0.5rem;
+}
+
+.page-desc {
+  color: whitesmoke;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.accent {
+  color: orange;
+}
+
+.recent-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 1.2rem;
+}
+
+.stat-card {
+  background-color: black;
+  border-radius: 8px;
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  gap: 0.2rem;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: orange;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.section-header {
+  margin-bottom: 0.9rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.section-sub {
+  font-size: 0.78rem;
+  color: whitesmoke;
+  margin-top: 0.15rem;
+}
+
+.map-section {
+  margin-bottom: 2.5rem;
+}
+
+.map-container {
+  width: 100%;
+  height: 412px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.popup-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+  padding: 2px 4px;
+}
+
+.feed-section {
+  margin-bottom: 2.5rem;
+}
+
+.quake-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.quake-card {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  background-color: black;
+  border-left: 4px solid orange;
+  border-radius: 8px;
+  padding: 0.9rem 1.2rem;
+  transition: background-color 0.15s ease;
+}
+
+.quake-card.mag-low {
+  border-left-color:darkgreen;
+}
+
+.quake-card.mag-mid {
+  border-left-color: goldenrod;
+}
+
+.quake-card.mag-high {
+  border-left-color: red;
+}
+
+.quake-mag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  flex-shrink: 0;
+}
+
+.mag-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.quake-card.mag-low .mag-value {
+  color:darkgreen;
+}
+
+.quake-card.mag-mid .mag-value {
+  color: goldenrod;
+}
+
+.quake-card.mag-high .mag-value {
+  color: red;
+}
+
+.quake-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.quake-place {
+  font-size: 14px;
+  font-weight: bold;
+  color: whitesmoke;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.2rem;
+}
+
+.quake-time,
+.quake-depth {
+  font-size: 0.76rem;
+  color: whitesmoke;
+}
+
+.quake-actions {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.quake-link {
+  color: orange;
+  font-size: 0.78rem;
+  border: 1px solid rgb(44,44,44);
+  border-radius: 4px;
+  padding: 0.28rem 0.6rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.quake-link:hover {
+  background-color: rgb(44,44,44);
+  color: #fff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.48rem 1.2rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: rgb(44,44,44);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: orange;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: orange;
+  border: 1px solid rgb(44,44,44);
+}
+
+.btn-outline:hover {
+  background-color: rgb(44,44,44);
+  color: #fff;
+}
+
+.btn-large {
+  padding: 0.7rem 2rem;
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+}
+
+.form-section {
+  background-color: black;
+  border: 1px solid orange;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-size: 15px;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.form-select,
+.form-input {
+  background-color: rgb(44,44,44);
+  border: 1px solid orange;
+  color: whitesmoke;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.15s ease;
+}
+
+.about-section {
+  margin-top: 0.5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.about-card {
+  background-color: black;
+  border: 1px solid orange;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.about-card-title {
+  font-size: 0.78rem;
+  color: orange;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.about-card-text {
+  font-size: 12px;
+  color: whitesmoke;
+  line-height: 1.75;
+}
+
+.about-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 12px;
+  color: whitesmoke;
+}
+
+
+.footer {
+  background-color: black;
+  border-top: 1px solid orange;
+  text-align: center;
+  padding: 1.1rem;
+  font-size: 0.76rem;
+  color: whitesmoke;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .main {
+    padding: 1.2rem;
+  }
+
+  .map-container {
+    height: 280px;
+  }
+
+  .quake-place {
+    white-space: normal;
+  }
+}

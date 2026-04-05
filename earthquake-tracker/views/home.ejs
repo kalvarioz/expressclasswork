@@ -1,0 +1,64 @@
+<%- include('partials/header', { title: 'Live Feed' }) %>
+<%- include('partials/nav') %>
+
+<main class="main">
+    <p class="page-desc">
+      Showing the <strong><%= quakes.length %></strong> most recent M4.5+ earthquakes worldwide, updated live from the USGS.
+    </p>
+    <a href="/search" class="btn btn-primary">Search</a>
+
+    <div class="recent-stats">
+      <div class="stat-card">
+        <span class="stat-value"><%= quakes.length %></span>
+        <span class="stat-label">Events</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">
+          <%= quakes.reduce((max, q) => Math.max(max, parseFloat(q.magnitude)), 0).toFixed(1) %>
+        </span>
+        <span class="stat-label">Max Mag.</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value"><%= quakes.filter(q => parseFloat(q.magnitude) >= 6).length %></span>
+        <span class="stat-label">M6+ Events</span>
+      </div>
+    </div>
+  <section class="map-section">
+    <div class="section-header">
+      <h2 class="section-title">World Map</h2>
+      <p class="section-sub">Circle size and color correspond to magnitude</p>
+    </div>
+    <div id="map" class="map-container"></div>
+  </section>
+
+  <section class="feed-section">
+    <div class="section-header">
+      <h2 class="section-title">Recent Events</h2>
+      <p class="section-sub">Sorted by most recent first</p>
+    </div>
+    <div class="quake-list">
+      <% quakes.forEach(q => { %>
+        <div class="quake-card mag-<%= parseFloat(q.magnitude) >= 6 ? 'high' : parseFloat(q.magnitude) >= 5 ? 'mid' : 'low' %>">
+          <div class="quake-mag">
+            <span class="mag-value"><%= q.magnitude %></span>
+            <span class="mag-label">mag</span>
+          </div>
+          <div class="quake-info">
+            <p class="quake-place"><%= q.place %></p>
+            <p class="quake-time"><%= q.timeAgo %> - <%= q.time %></p>
+            <p class="quake-depth">Depth: <strong><%= q.depth %> km</strong></p>
+          </div>
+          <div class="quake-actions">
+            <a href="<%= q.url %>" target="_blank" class="quake-link">USGS →</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
+<script src="/js/map.js"></script>
+<script>initMap(<%- JSON.stringify(quakes) %>);</script>
+</body>
+</html>
