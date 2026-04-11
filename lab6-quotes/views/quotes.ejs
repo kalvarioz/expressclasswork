@@ -1,0 +1,47 @@
+<!-- Authors: Brandon Calvario, Matthew Barrett -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+    <%-include ('partials/head')%>
+    <div class="container py-4">
+        <nav class="mb-3">
+            <a href="/" class="btn btn-outline-secondary btn-sm">Back to Search</a>
+        </nav>
+        <h1 class="text-center mb-4">
+            <%= heading %>
+        </h1>
+        <div class="container">
+            <% for (let i of rows) { %>
+                <i class="fs-5"><%= i.quote %></i><br>
+                <a href="#" class="authorNames" authorId="<%= i.authorId %>">
+                    <%= i.firstName %> <%= i.lastName %>
+                </a><br><br>
+            <% } %>
+        </div>
+        <dialog id="authorModal">
+            <div id="authorInfo" style="padding: 1.5rem;">
+                <button id="closeModal" class="btn btn-sm btn-secondary mb-3">✕ Close</button>
+                <div class="text-center">
+                    <img id="authorPicture" width="220" src="" alt="Author portrait"
+                        style="border-radius: 6px; display:block; margin: 0 auto 1rem;">
+                    <h4 id="authorName" class="mb-1"></h4>
+                    <p id="authorDates" class="text-muted small mb-2"></p>
+                    <p id="authorSex" class="text-muted small mb-3"></p>
+                </div>
+                <p id="authorBio" class="fst-italic" style="font-size: 0.9rem;"></p>
+            </div>
+        </dialog>
+    </div>
+    <%-include ('partials/footer')%>
+    <script src="js/quotes.js"></script>
+</body>
+</html>
