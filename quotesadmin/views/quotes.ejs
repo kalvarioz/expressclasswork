@@ -1,41 +1,32 @@
-<!--
-What i understand from get, update, post, etc
-
-List page.ejs, here is where the link or <a> tag would be, this is 
-important as this passes the ID to the url and displays the author you want
-to view or assign a new quote to..
-
-GET:
-In index, we use req.query.id, which reads the ID.
-
-Inside the query, SELECT WHERE id=? fecthes current data.
-res.render("ejs".ejs) shows the edit form.
-
-POST:
-We then use req.body (Not query).field, field reads form inputs, or whatever
-the user enters as an update or new item.
-
-UPDATE SET.... WHERE ID=?; This writes to MySQL.
-res.redirect sends the user back to the list to signal that the updates were
-successful.
-
-No javasctipt needed it seems!
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Quotes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-    <h1> all quotes </h1>
-    <% for (let i of quote){ %>
-        <a href="/updateQuote?quoteId=<%=i.quoteId%>"> ...Update </a>
-        <%=i.quoteid %> <%=i.quote%><br>
+    <%- include('partials/nav') %>
+    <h1>All Quotes</h1>
+
+    <% for (let i of quotes){ %>
+        <div class="quote-entry">
+            <div class="quote-text">
+                "<%=i.quote%>"
+                <span class="quote-author"> - <%=i.firstName%> <%=i.lastName%></span>
+            </div>
+            <div class="quote-meta">
+                <span class="quote-category"><%=i.category%></span>
+                <span class="quote-likes"><i class="bi bi-heart-fill"></i> <%=i.likes%></span>
+            </div>
+            <div class="quote-link">
+                <a href="/updateQuote?quoteId=<%=i.quoteId%>">Update</a>
+                <a href="/deleteQuote?quoteId=<%=i.quoteId%>">Delete</a>
+            </div>
+        </div>
     <% } %>
 </body>
 </html>
