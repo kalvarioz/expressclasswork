@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1> All Authors </h1>
+    <!--
+    for loop to obtain authors
+    the < % opearator outputs the identification, but no proper output, like text on the site.
+    
+    Using < %= is an escaped output, which outputs the assigned variable in the program, in this case,
+    each assigned variable in the forloop (all authors.)
+    -->
+    <% for (let i of authors) { %>
+        <a href="/updateAuthor?authorId=<%=i.authorId%>"> Update </a>
+        
+        <%= i.firstName %> <%= i.lastName %><br>
+   <% } %>
+    
+</body>
+</html>

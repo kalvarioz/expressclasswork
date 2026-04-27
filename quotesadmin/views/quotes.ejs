@@ -1,0 +1,41 @@
+<!--
+What i understand from get, update, post, etc
+
+List page.ejs, here is where the link or <a> tag would be, this is 
+important as this passes the ID to the url and displays the author you want
+to view or assign a new quote to..
+
+GET:
+In index, we use req.query.id, which reads the ID.
+
+Inside the query, SELECT WHERE id=? fecthes current data.
+res.render("ejs".ejs) shows the edit form.
+
+POST:
+We then use req.body (Not query).field, field reads form inputs, or whatever
+the user enters as an update or new item.
+
+UPDATE SET.... WHERE ID=?; This writes to MySQL.
+res.redirect sends the user back to the list to signal that the updates were
+successful.
+
+No javasctipt needed it seems!
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> all quotes </h1>
+    <% for (let i of quote){ %>
+        <a href="/updateQuote?quoteId=<%=i.quoteId%>"> ...Update </a>
+        <%=i.quoteid %> <%=i.quote%><br>
+    <% } %>
+</body>
+</html>
